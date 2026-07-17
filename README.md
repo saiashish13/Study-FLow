@@ -1,411 +1,640 @@
-# 🌌 StudyFlow
+﻿# StudyFlow
+
+A polished, full-stack flashcard learning platform for students, professionals, and exam aspirants who want structured review, measurable progress, and a clean study experience.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lucide-react/lucide/main/icons/graduation-cap.svg" width="80" height="80" alt="StudyFlow Logo" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); padding: 16px; border-radius: 24px; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);" />
-</p>
-
-<h3 align="center">StudyFlow</h3>
-
-<p align="center">
-  <strong>Accelerate your learning. Track your retention. Master any subject.</strong>
+  <img src="screenshots/dashboard.png" alt="StudyFlow dashboard preview" width="100%" />
 </p>
 
 <p align="center">
-  A premium, world-class flashcard learning platform built with a modern SaaS-style frontend, detailed cognitive analytics, and a secure Express API backend.
+  <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/License-Pending-lightgrey" alt="License" />
+  <img src="https://img.shields.io/badge/Build-Not%20Configured-lightgrey" alt="Build" />
+  <img src="https://img.shields.io/badge/Stack-Next.js%20%2B%20Express-5C5CFF" alt="Stack" />
+  <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen" alt="Status" />
 </p>
 
-<p align="center">
-  <a href="#-key-features"><strong>Explore Features</strong></a> ·
-  <a href="#-screenshots-gallery"><strong>View Gallery</strong></a> ·
-  <a href="#-installation--setup"><strong>Quick Start</strong></a> ·
-  <a href="#-api-overview"><strong>API Docs</strong></a>
-</p>
+## Table of Contents
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/Express-4.21-blue?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
-  <img src="https://img.shields.io/badge/PostgreSQL-16.0-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
-</p>
-
----
-
-## 🚀 Product Overview
-
-StudyFlow is designed for students, professionals, and lifelong learners who want a structured, high-performance study environment. Combining the principles of active recall and spaced repetition with deep visual telemetry, StudyFlow transforms simple study cards into an intelligent exam-preparation engine. 
-
-### Key Value Propositions
-*   **Active Recall Loop**: Push facts from short-term memory to long-term retention using customizable card runs.
-*   **Cognitive Analytics**: Go beyond simple correct/incorrect tracking with detailed retention estimations and mastery graphs.
-*   **Developer-First Architecture**: Built on a solid Next.js App Router frontend, TypeScript backend, and structured PostgreSQL schema with an automatic memory-fallback for local development.
-
----
-
-## ✨ Key Features
-
-### 📚 Flashcard Library
-*   **Filter & Find**: Dynamic search bar, subject filter tabs, and difficulty dropdowns.
-*   **Interactive Controls**: Star your favorite cards to build custom review lists, or adjust difficulty ratings ('Easy', 'Medium', 'Hard') on the fly.
-*   **Actionable Cards**: Quick-action buttons to instantly duplicate or delete cards from the list view.
-
-### ✍️ Premium Card Editor
-*   **Live Markdown Preview**: See exactly how your question and answer cards will look before saving them to the database.
-*   **Category Integration**: Dynamically categorize cards under subjects (e.g. Polity, Economy, Geography) to automatically color-code them.
-*   **Clean Forms**: Modern, interactive input fields with validation and feedback alerts.
-
-### 📖 Dynamic Study Session
-*   **Flexible Study Modes**: Choose between Standard, Recall Quiz, and Weakness Review modes in a unified interface.
-*   **Smooth Navigation**: Integrated progress indicator bars, card flipping gestures, and instant keyboard shortcuts.
-*   **Session Metrics**: Real-time timer and recall rate metrics updated during active study.
-
-### 📊 Performance Telemetry
-*   **Estimated Retention**: An algorithm-backed recall-strength gauge reflecting the durability of your study progress.
-*   **Weekly Study Activity**: Visual bar charts tracking total sessions, durations, and accuracy trends over time.
-*   **Mastery Heatmaps**: Category-by-category breakdown showing accuracy percentages across Polity, Economy, History, and more.
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Technology Stack](#technology-stack)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Usage Guide](#usage-guide)
+- [API Documentation](#api-documentation)
+- [Project Structure](#project-structure)
+- [Technical Highlights](#technical-highlights)
+- [Performance](#performance)
+- [Security](#security)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [CI/CD](#cicd)
+- [Screenshots](#screenshots)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Acknowledgements](#acknowledgements)
+- [Support](#support)
+- [Missing Information](#missing-information)
 
 ---
 
-## 📸 Screenshots Gallery
+## Overview
 
-### 🖥️ Main Study Dashboard
-A centralized dashboard aggregating active streaks, daily session statistics, practice duration, and deck progress.
-![StudyFlow Dashboard](./screenshots/dashboard.png)
+StudyFlow exists to make studying more deliberate, measurable, and efficient. It combines a modern web interface with a secure backend so users can create flashcards, review them in structured study modes, and track performance over time.
 
-### 📚 Interactive Flashcard Library
-Search, sort, filter, and organize every flashcard card dynamically with quick-actions.
-![StudyFlow Library](./screenshots/library.png)
+### Why it exists
 
-### ✍️ Flashcard Creator & Live Preview Editor
-Create polished cards with subject categories, difficulty ratings, and immediate preview rendering.
-![StudyFlow Editor](./screenshots/editor.png)
+Many learners rely on scattered notes, static documents, or fragmented apps that do not turn study activity into a repeatable system. StudyFlow addresses that gap by combining:
 
-### 📖 Focused Study Session Interface
-An immersive, distraction-free environment for reviewing cards with card flipping mechanics.
-![StudyFlow Study Session](./screenshots/study.png)
+- active recall workflows
+- a focused flashcard editor
+- dashboard analytics
+- a simple authentication and persistence layer
 
-### 📈 Detailed Performance Analytics
-In-depth metrics including estimated cognitive retention, category mastery levels, and daily streak tracking.
-![StudyFlow Analytics](./screenshots/analytics.png)
+### Real-world use cases
+
+- exam preparation for competitive exams and certifications
+- daily revision for technical concepts and professional learning
+- spaced review for long-term retention
+- personal knowledge management for students and professionals
+
+### Target users
+
+- students
+- educators and study groups
+- software engineers reviewing technical topics
+- professionals building a personal knowledge base
+
+### Key advantages
+
+- clean, modern interface
+- fast local development workflow
+- structured data model for cards, categories, and sessions
+- PostgreSQL-backed persistence with an in-memory fallback for local development
 
 ---
 
-## 🎨 Design System & Aesthetics
+## Features
 
-StudyFlow is styled according to elite SaaS design principles inspired by Vercel, Stripe, and Linear:
-*   **Dark-Mode Aesthetics**: Midnight backgrounds (`#09090b`) contrasted with sleek dark cards and clean borders (`#27272a`).
-*   **Vibrant HSL Accents**: Sophisticated purple (`#8b5cf6`) and indigo (`#6366f1`) gradients for focal indicators.
-*   **Apple-Level Simplicity**: Generous spacing, clean typography (using standard sans-serif system fonts), and subtle micro-animations powered by Framer Motion.
-*   **Responsive Fluidity**: Adaptive layouts for everything from ultra-wide monitors down to standard smartphone screens.
+### Learning experience
+
+- 📚 Flashcard library with search, filtering, favorites, duplicate, and delete actions
+- ✍️ Card editor with question/answer fields and category selection
+- 🧠 Study modes for standard review, quiz-style practice, and targeted review
+- 📈 Analytics views for accuracy, study time, streaks, and category performance
+
+### Product experience
+
+- 🧭 Responsive dashboard layout for overview and daily progress
+- 🔍 Command-style search and navigation patterns
+- 🎨 Dark-mode-friendly UI with a polished SaaS-style design
+- ⚡ Fast state updates using a lightweight client store
+
+### Platform engineering
+
+- 🔐 JWT-based authentication and Google OAuth support
+- 🗄️ PostgreSQL persistence with SQL schema definitions
+- 🛡️ Backend middleware for route protection and secure request handling
+- 🔁 Graceful fallback to in-memory storage when the database is unavailable
 
 ---
 
-## 🔄 User Journey & Core Workflow
+## Architecture
 
-The typical StudyFlow loop is designed to maximize learning efficiency:
+StudyFlow follows a simple layered architecture:
 
 ```mermaid
-graph TD
-    A[User Registers / Logs In] --> B[Dashboard Hub]
-    B --> C[Create new Category & Flashcards in Editor]
-    C --> D[View Decks in Library]
-    D --> E[Initiate Study Session]
-    E -->|Flip Card & Assess| F[Select Study Mode: Standard, Quiz, or Review]
-    F -->|Submit Result| G[Save Session Stats to Database]
-    G --> H[Update Performance Analytics Dashboard]
-    H --> B
+flowchart LR
+    A[Next.js Frontend] --> B[Express API]
+    B --> C[Auth Middleware]
+    B --> D[Flashcard Routes]
+    B --> E[PostgreSQL Database]
+    B -. fallback .-> F[In-Memory Store]
 ```
 
----
+### Component responsibilities
 
-## 🏗️ System Architecture
+- Frontend: route-based pages for dashboard, library, editor, study, analytics, and settings
+- Backend: request handling, authentication, flashcard CRUD operations, and health checks
+- Database layer: persistent storage for users, categories, flashcards, study sessions, and results
+- Middleware: JWT verification and request authentication
 
-StudyFlow implements a modern decoupled architecture:
+### Data flow
 
-```mermaid
-graph LR
-    subgraph Frontend [Client - Next.js App Router]
-        UI[React Components / Tailwind CSS]
-        Store[Zustand State Management]
-        Charts[Recharts Engine]
-    end
+1. A user signs in or registers.
+2. The frontend calls the backend API with a bearer token.
+3. The backend validates the token and reads or writes flashcard data.
+4. The application updates the UI based on the returned state.
 
-    subgraph Backend [API - Express.js Node Server]
-        Router[API Routes /auth & /flashcards]
-        AuthMW[JWT Authorization Middleware]
-        GoogleOAuth[Google OAuth Exchange]
-    end
+### Design decisions
 
-    subgraph Database [Storage Layer]
-        PGDB[(PostgreSQL Database)]
-        MemoryDB[(In-Memory Database Fallback)]
-    end
-
-    UI --> Store
-    Store --> Router
-    Router --> AuthMW
-    AuthMW --> PGDB
-    Router -.->|Fallback if DB offline| MemoryDB
-```
+- TypeScript is used throughout the stack for safer development and clearer contracts.
+- The backend is intentionally modular with separate auth and flashcard route files.
+- The app can run locally without a database by using the in-memory fallback.
 
 ---
 
-## 🛠️ Tech Stack
+## Technology Stack
 
-| Component | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend** | [Next.js 15](https://nextjs.org/) | React Server Components & App Router framework |
-| | [React 19](https://react.dev/) | Component-driven UI library |
-| | [Zustand](https://github.com/pmndrs/zustand) | Ultra-light, hook-based client state management |
-| | [Framer Motion](https://www.framer.com/motion/) | Production-ready animations and gestures |
-| | [Recharts](https://recharts.org/) | Composited charting library for dashboard telemetry |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | Utility-first styling framework |
-| | [Radix UI](https://www.radix-ui.com/) | Primitive unstyled, accessible UI components |
-| | [Lucide React](https://lucide.dev/) | Clean, consistent SVG icon set |
-| **Backend** | [Express](https://expressjs.com/) | Robust, minimalist web framework |
-| | [TypeScript](https://www.typescriptlang.org/) | Strongly typed JavaScript variant |
-| | [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) | Secure, stateless JWT verification |
-| | [bcryptjs](https://github.com/dcodeIO/bcrypt.js/) | Secure password hashing algorithm |
-| **Database** | [PostgreSQL](https://www.postgresql.org/) | Enterprise-grade relational SQL database |
-| | [pg Node Client](https://node-postgres.com/) | Non-blocking PostgreSQL client driver for Node.js |
-| **Tooling** | [tsx](https://github.com/privatenumber/tsx) | Fast TypeScript execution module for dev server |
+| Area | Technology |
+| --- | --- |
+| Frontend | Next.js, React, Tailwind CSS, Radix UI, Framer Motion, Recharts |
+| Backend | Express.js, TypeScript, Node.js |
+| Database | PostgreSQL, pg client |
+| Authentication | JWT, bcryptjs, Google OAuth |
+| APIs | REST JSON APIs |
+| AI/ML | Not currently implemented |
+| DevOps | Basic local scripts and environment-based configuration |
+| Deployment | Planned for container or cloud deployment |
+| Cloud Services | Google OAuth, optional managed PostgreSQL |
+| Testing | No automated test suite is currently checked in |
+| Programming Languages | TypeScript, JavaScript |
+| Frameworks | Next.js, Express |
+| Libraries | Zustand, Lucide React, clsx, tailwind-merge |
 
 ---
 
-## 📂 Project Structure
-
-```text
-.
-├── backend/                       # Express Node.js Server
-│   ├── db/
-│   │   ├── memory.ts              # In-memory mock DB fallback configuration
-│   │   ├── pool.ts                # PostgreSQL connection pooling config
-│   │   └── schema.sql             # DB initialization schema & indexes
-│   ├── middleware/
-│   │   └── auth.ts                # Route protection JWT verification middleware
-│   ├── routes/
-│   │   ├── auth.ts                # Authentication endpoints & Google OAuth handler
-│   │   └── flashcards.ts          # Flashcard & Session CRUD endpoints
-│   ├── src/
-│   │   └── index.ts               # Server entry point, middleware setup, port listener
-│   ├── tsconfig.json              # TypeScript compilation rules
-│   └── package.json               # Backend dependencies & dev scripts
-│
-├── frontend/                      # Next.js Client
-│   ├── app/                       # Page routes (Dashboard, Library, Editor, Study, Analytics)
-│   │   ├── layout.tsx             # Global layout wrapper
-│   │   └── page.tsx               # Client landing page
-│   ├── components/                # Reusable UI primitives (Dialog, Tab, Toast, Progress)
-│   ├── lib/                       # Utility helpers & API client instances
-│   ├── store/                     # Zustand state management files
-│   ├── tailwind.config.ts         # Custom styling colors, grids, fonts, & animations
-│   ├── tsconfig.json              # Client-side compilation parameters
-│   └── package.json               # Client dependencies, scripts, & dev servers
-│
-├── screenshots/                   # Production-ready visual assets & screenshots
-│   ├── analytics.png
-│   ├── dashboard.png
-│   ├── editor.png
-│   ├── library.png
-│   └── study.png
-│
-├── start_app.bat                  # Root startup script to run both servers concurrently
-└── README.md                      # Documentation manual (this file)
-```
-
----
-
-## ⚙️ Environment Setup
-
-### Backend Environment (`backend/.env`)
-Create a `.env` file inside the `backend/` directory based on the following configurations:
-
-| Key | Example Value | Description | Required |
-| :--- | :--- | :--- | :--- |
-| `DATABASE_URL` | `postgres://postgres:postgres@localhost:5432/studyflow` | PostgreSQL database connection string | Yes (Or defaults to In-Memory DB) |
-| `JWT_SECRET` | `your-secure-jwt-signature-secret-key` | Signature key for encryption tokens | Yes |
-| `PORT` | `4000` | Port for the Express backend API server | Yes |
-| `FRONTEND_URL` | `http://localhost:3000` | Allowed CORS origin (Next.js server) | Yes |
-| `BACKEND_URL` | `http://localhost:4000` | Origin address of the Express backend server | Yes |
-| `GOOGLE_CLIENT_ID` | `27429632...googleusercontent.com` | Google Console OAuth Client ID | No (Fallback to email sign-in) |
-| `GOOGLE_CLIENT_SECRET` | `GOCSPX-yoursecretcode` | Google Console OAuth Client Secret | No (Fallback to email sign-in) |
-| `GOOGLE_REDIRECT_URI` | `http://localhost:4000/auth/google/callback` | OAuth redirect landing callback | No |
-
-### Frontend Environment (`frontend/.env.local` or environment variables)
-The frontend uses the following environment variable to locate the API backend:
-
-| Key | Default Value | Description |
-| :--- | :--- | :--- |
-| `NEXT_PUBLIC_API_URL` | `http://localhost:4000` | Direct location of the running Express API server |
-
----
-
-## 💾 Database Schema
-
-StudyFlow uses PostgreSQL for durable data structures. The schema contains optimized indexes on high-query paths:
-
-```sql
--- Core User Profiles
-create table users (
-  id uuid primary key,
-  name text not null,
-  email text not null unique,
-  password_hash text,
-  google_id text unique,
-  avatar_url text,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
--- Subject Categories
-create table categories (
-  id uuid primary key,
-  user_id uuid not null references users(id) on delete cascade,
-  name text not null,
-  color text not null default '#0f766e',
-  created_at timestamptz not null default now(),
-  unique (user_id, name)
-);
-
--- Flashcards Data Structure
-create table flashcards (
-  id uuid primary key,
-  user_id uuid not null references users(id) on delete cascade,
-  category_id uuid references categories(id) on delete set null,
-  question text not null,
-  answer text not null,
-  favorite boolean not null default false,
-  difficulty text not null default 'Medium',
-  studied_count integer not null default 0,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
--- Indexes for performance
-create index flashcards_user_category_idx on flashcards(user_id, category_id);
-```
-
----
-
-## ⚡ Installation & Setup
+## Installation
 
 ### Prerequisites
-*   [Node.js (v20 or higher)](https://nodejs.org/)
-*   [npm (v10 or higher)](https://www.npmjs.com/)
-*   [PostgreSQL (v15 or higher)](https://www.postgresql.org/)
 
----
+- Node.js 20+
+- npm 10+
+- PostgreSQL 15+ (recommended for persistent storage)
 
-### Step 1: Clone the Repository
+### 1. Clone the repository
+
 ```bash
-git clone https://github.com/your-username/studyflow.git
-cd studyflow
+git clone <your-repository-url>
+cd Study\ FLow
 ```
 
-### Step 2: Database Initialization
-If you have PostgreSQL installed:
-1. Create a database named `studyflow`.
-2. Apply the schema file:
-```bash
-psql "postgres://username:password@localhost:5432/studyflow" -f backend/db/schema.sql
-```
-> 💡 *Note: If PostgreSQL is not configured, the backend automatically falls back to an in-memory storage array. Your data will persist as long as the backend process runs.*
+### 2. Install dependencies
 
----
-
-### Step 3: Run the Services
-
-#### Option A: Automatic Concurrent Launch (Recommended)
-We include a root-level batch script that launches both the frontend and backend servers in separate Windows command windows. Just double-click `start_app.bat` or run:
-```bash
-.\start_app.bat
-```
-
-#### Option B: Manual Setup
-
-1. **Backend Server Setup**:
 ```bash
 cd backend
 npm install
-# Configure your .env file
-npm run dev
-```
 
-2. **Frontend Client Setup**:
-```bash
 cd ../frontend
 npm install
+```
+
+### 3. Create environment files
+
+Create a file named `.env` in the backend directory:
+
+```env
+PORT=4000
+JWT_SECRET=your-secret-key
+FRONTEND_URL=http://localhost:3000
+BACKEND_URL=http://localhost:4000
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/studyflow
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT_URI=http://localhost:4000/auth/google/callback
+```
+
+Create a frontend environment file if needed:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:4000
+```
+
+### 4. Initialize the database
+
+If PostgreSQL is available, create a database named `studyflow` and load the schema:
+
+```bash
+psql "postgres://postgres:postgres@localhost:5432/studyflow" -f backend/db/schema.sql
+```
+
+> If the database is unavailable, the backend will fall back to its in-memory store for local development.
+
+### 5. Run locally
+
+Backend:
+
+```bash
+cd backend
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to start using StudyFlow.
+Frontend:
+
+```bash
+cd frontend
+npm run dev
+```
+
+Open http://localhost:3000 to view the app.
+
+### Windows convenience script
+
+The repository includes a root-level launcher for Windows:
+
+```powershell
+./start_app.bat
+```
 
 ---
 
-## 🔌 API Overview
+## Environment Variables
 
-### Authentication Routes (`/auth`)
-*   `POST /auth/register` - Create a new user profile.
-*   `POST /auth/login` - Securely log in via Email/Password. Returns user details & Bearer JWT token.
-*   `GET /auth/google` - Redirect to Google OAuth Consent Page.
-*   `GET /auth/google/callback` - Receive authorization code from Google API.
-
-### Flashcard CRUD Routes (`/flashcards`)
-*   `GET /flashcards` - Retrieve all flashcards associated with the authorized user.
-*   `POST /flashcards` - Create a new flashcard.
-*   `PATCH /flashcards/:id` - Update an existing flashcard (change question, answer, difficulty, favorite status).
-*   `DELETE /flashcards/:id` - Permanently remove a flashcard.
-
-> 🔒 *Security Note: All `/flashcards` requests must include an `Authorization: Bearer <JWT_TOKEN>` header.*
+| Name | Required | Description | Example |
+| --- | --- | --- | --- |
+| `PORT` | Yes | Backend port | `4000` |
+| `JWT_SECRET` | Yes | Secret used to sign JWTs | `super-secret-key` |
+| `FRONTEND_URL` | Yes | Allowed frontend origin for CORS | `http://localhost:3000` |
+| `BACKEND_URL` | Yes | Public backend URL for OAuth redirects | `http://localhost:4000` |
+| `DATABASE_URL` | No for local fallback | PostgreSQL connection string | `postgres://postgres:postgres@localhost:5432/studyflow` |
+| `GOOGLE_CLIENT_ID` | No | Google OAuth client ID | `...apps.googleusercontent.com` |
+| `GOOGLE_CLIENT_SECRET` | No | Google OAuth client secret | `...` |
+| `GOOGLE_REDIRECT_URI` | No | OAuth callback URI | `http://localhost:4000/auth/google/callback` |
+| `NEXT_PUBLIC_API_URL` | Yes for frontend | Frontend API base URL | `http://localhost:4000` |
 
 ---
 
-## 🛡️ Authentication & Security
+## Usage Guide
 
-1.  **Stateless JWT Security**: The server issues standard cryptographic JWT tokens upon registration or login. The tokens expire in 7 days, maintaining a secure user state.
-2.  **Password Protection**: Native user passwords are encrypted using bcrypt hashing rounds before insertion, preventing plain-text exposures.
-3.  **Google OAuth Integration**: Offers passwordless authentication using Google accounts.
-4.  **SQL Injection Prevention**: The PostgreSQL client utilizes parameterized queries for all client operations.
+### Typical user workflow
 
----
+1. Register or sign in with email or Google OAuth.
+2. Open the dashboard to review progress and active study themes.
+3. Create or edit flashcards in the editor.
+4. Visit the library to search, favorite, duplicate, or organize cards.
+5. Start a study session in standard, quiz, or review mode.
+6. Review analytics to see accuracy, study time, and category trends.
 
-## 🚀 Performance & Scalability
+### Example experience
 
-*   **Connection Pooling**: Uses connection pool management (`pg.Pool`) to share active database processes and eliminate connection overhead.
-*   **Custom Indexing**: Tables are indexed on composite keys (`user_id` + `category_id`) to accelerate query lookups during dashboard aggregation.
-*   **React Optimization**: The frontend utilizes lightweight Zustand stores for modular, slice-based state subscription, reducing unnecessary DOM updates.
-*   **Next.js Optimization**: Compiles server side where possible and utilizes static/client chunks to minimize JavaScript payloads.
+- A learner creates cards for constitutional law and economics.
+- The learner reviews them in short sessions and marks difficult cards as favorites.
+- The dashboard highlights activity and the analytics page reflects progression over time.
 
----
+### Screenshots
 
-## 🗺️ Future Roadmap
+The repository already includes representative screenshots in the screenshots folder:
 
-- [ ] **Spaced Repetition Integration**: Implementing the SuperMemo-2 (SM-2) algorithm to predict exact review intervals.
-- [ ] **Collaborative Decks**: Group features to allow study partners to share, fork, and rate community card decks.
-- [ ] **WebSockets Review Groups**: Synchronous live card games and quizzes with peers.
-- [ ] **Offline Sync**: PWA capabilities caching session metrics inside IndexedDB and syncing when back online.
-
----
-
-## 🤝 Contributing
-
-We welcome open-source contributions to StudyFlow!
-1. **Fork** the project.
-2. Create a feature branch: `git checkout -b feature/amazing-improvement`.
-3. **Commit** changes using clear messages: `git commit -m 'feat: add spaced repetition tracking'`.
-4. **Push** to the branch: `git push origin feature/amazing-improvement`.
-5. Open a **Pull Request**.
+- Dashboard
+- Library
+- Editor
+- Study session
+- Analytics
 
 ---
 
-## 📄 License & Credits
+## API Documentation
 
-Distributed under the MIT License. See `LICENSE` for more information.
+The backend currently exposes a small REST API for authentication and flashcards.
 
-Developed by [N. Sai Ashish](https://github.com/nsaiashish135). 
+### Health check
+
+```http
+GET /health
+```
+
+Response:
+
+```json
+{
+  "ok": true
+}
+```
+
+### Authentication
+
+#### Register a user
+
+```http
+POST /auth/register
+Content-Type: application/json
+```
+
+```json
+{
+  "name": "Ada",
+  "email": "ada@example.com",
+  "password": "secure-password"
+}
+```
+
+Response:
+
+```json
+{
+  "user": {
+    "id": "...",
+    "name": "Ada",
+    "email": "ada@example.com"
+  },
+  "token": "jwt-token"
+}
+```
+
+#### Login
+
+```http
+POST /auth/login
+Content-Type: application/json
+```
+
+```json
+{
+  "email": "ada@example.com",
+  "password": "secure-password"
+}
+```
+
+### Flashcards
+
+All flashcard routes require a bearer token.
+
+```http
+GET /flashcards
+Authorization: Bearer <token>
+```
+
+```http
+POST /flashcards
+Authorization: Bearer <token>
+Content-Type: application/json
+```
+
+```json
+{
+  "question": "What is a closure in JavaScript?",
+  "answer": "A function that captures variables from its parent scope.",
+  "categoryId": "...",
+  "difficulty": "Medium"
+}
+```
+
+```http
+PATCH /flashcards/:id
+Authorization: Bearer <token>
+```
+
+```http
+DELETE /flashcards/:id
+Authorization: Bearer <token>
+```
+
+### Error handling
+
+Common error responses include:
+
+- `400` for missing input or malformed requests
+- `401` for invalid or missing credentials
+- `404` for missing flashcards
+- `409` when a user already exists during registration
 
 ---
 
-<p align="center">
-  Made with ❤️ by the StudyFlow Team.
-</p>
+## Project Structure
+
+```text
+project/
+├── backend/
+│   ├── db/
+│   │   ├── memory.ts
+│   │   ├── pool.ts
+│   │   └── schema.sql
+│   ├── middleware/
+│   │   └── auth.ts
+│   ├── routes/
+│   │   ├── auth.ts
+│   │   └── flashcards.ts
+│   └── src/
+│       └── index.ts
+├── frontend/
+│   ├── app/
+│   ├── components/
+│   ├── lib/
+│   └── store/
+├── screenshots/
+├── start_app.bat
+└── README.md
+```
+
+### Folder overview
+
+- backend: API server, middleware, and database access layer
+- backend/db: schema and connection helpers
+- backend/routes: auth and flashcard route implementations
+- frontend/app: route-level pages and app shell structure
+- frontend/components: reusable UI elements and page widgets
+- frontend/lib: utility code and sample data
+- frontend/store: state management for flashcards and study data
+- screenshots: project screenshots used in documentation
+
+---
+
+## Technical Highlights
+
+- Type-safe development with TypeScript on both frontend and backend
+- REST endpoint separation for authentication and flashcards
+- Component-driven UI architecture with reusable UI primitives
+- Secure password hashing and JWT-based session handling
+- Database-backed persistence with a local fallback mode
+- Clear separation between presentation, state, and API concerns
+
+### Best practices reflected in the codebase
+
+- environment-based configuration
+- parameterized SQL queries
+- route-level authentication checks
+- modular organization for future scaling
+- use of modern React and Next.js patterns
+
+---
+
+## Performance
+
+The current implementation is lightweight and suitable for local development and small-to-medium user loads.
+
+### Observed optimizations
+
+- connection pooling for PostgreSQL access
+- indexed schema design for flashcards and study results
+- lightweight client-side store for UI state
+- responsive UI with minimal page-level complexity
+
+### Notes
+
+- No formal benchmark suite is currently published.
+- Performance characteristics will depend on the deployed database and hosting environment.
+
+---
+
+## Security
+
+Security is treated as a first-class concern in the backend design.
+
+- Authentication uses JWT tokens for protected routes.
+- Passwords are hashed with bcrypt before being stored.
+- Google OAuth is supported as an optional sign-in path.
+- CORS is configured from environment settings.
+- SQL queries use parameterized statements.
+- Sensitive values should remain in environment variables and never be committed to source control.
+
+---
+
+## Testing
+
+### Current state
+
+No automated test suite is currently present in the repository.
+
+### Recommended strategy
+
+- unit tests for auth helpers and route behavior
+- integration tests for flashcard CRUD flows
+- end-to-end tests for login, card creation, and study flows
+- coverage reporting in CI once the suite is introduced
+
+---
+
+## Deployment
+
+### Docker
+
+Docker support is not yet configured in the repository. A production deployment would typically containerize the frontend and backend separately.
+
+### Docker Compose
+
+A compose setup could be introduced to run:
+
+- the frontend
+- the backend
+- PostgreSQL
+
+### Vercel / Netlify
+
+The Next.js frontend is a good fit for Vercel or Netlify. The backend should be deployed separately for API traffic.
+
+### Railway / Render
+
+These platforms are well suited for hosting the Express backend and linking to a managed PostgreSQL instance.
+
+### AWS / Azure / GCP
+
+A cloud deployment could use:
+
+- App Runner, ECS, or Azure Container Apps
+- Cloud Run or App Service for the API
+- managed PostgreSQL or a managed database service
+
+---
+
+## CI/CD
+
+No GitHub Actions workflow files are currently present in the repository. A production-ready setup should include:
+
+- linting
+- build verification
+- automated tests
+- deployment automation for main branches
+
+---
+
+## Screenshots
+
+### Dashboard
+
+![Dashboard screenshot](screenshots/dashboard.png)
+
+### Library
+
+![Library screenshot](screenshots/library.png)
+
+### Editor
+
+![Editor screenshot](screenshots/editor.png)
+
+### Study Session
+
+![Study session screenshot](screenshots/study.png)
+
+### Analytics
+
+![Analytics screenshot](screenshots/analytics.png)
+
+---
+
+## Future Improvements
+
+- [ ] Add a true spaced-repetition engine
+- [ ] Add collaborative decks and shared study spaces
+- [ ] Add offline-friendly behavior and caching
+- [ ] Add a mobile-first experience
+- [ ] Add automated tests and CI pipelines
+- [ ] Add OpenAPI documentation for the REST API
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your change with clear, focused commits.
+4. Open a pull request with a summary of the change.
+
+Preferred commit style:
+
+```bash
+git checkout -b feature/my-improvement
+git commit -m "feat: add new study workflow"
+```
+
+---
+
+## License
+
+A license file has not yet been added to this repository. Before publishing publicly, add an appropriate license such as MIT or Apache-2.0 and update this section accordingly.
+
+---
+
+## Author
+
+Name: Your Name
+
+- LinkedIn: https://www.linkedin.com/in/nakshatram-saiashish-85a166338/
+- GitHub: https://github.com/nsaiashish135
+- Email: nsaiashish2@gmail.com
+
+---
+
+## Acknowledgements
+
+This project builds on excellent open-source tools including Next.js, Express, PostgreSQL, Tailwind CSS, Radix UI, and TypeScript.
+
+---
+
+## Support
+
+If you encounter issues or want to request a feature, please open a GitHub issue with:
+
+- a clear summary of the problem
+- steps to reproduce it
+- expected behavior
+- relevant screenshots or logs if available
+
+---
+
+## Missing Information
+
+The following items are not currently defined in the repository and should be added for a more production-ready release:
+
+- a license file
+- automated tests
+- CI/CD workflow
+- Dockerfiles and Docker Compose configuration
+- OpenAPI or Swagger documentation
+- deployment configuration for production hosting
+- a maintained changelog and release process
